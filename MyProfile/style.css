@@ -1,0 +1,264 @@
+/* 1. 基础重置：消除浏览器默认的边距，确保布局可控 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. 定义全局背景和字体 */
+body {
+    background-color: #f9f9f9; 
+    color: #1a1a1a;           /* 接近纯黑的深灰色，比纯黑更护眼、高级 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;          /* 增加行高，提升阅读舒适度 */
+    padding: 40px 20px;        /* 手机端两侧预留空隙 */
+}
+
+/* 3. 容器宽度：这是实现“精英感”的关键，不要占满全屏 */
+main {
+    background-color: transparent; /* 或者设置白色背景配合阴影 */
+    max-width: 680px;          /* 黄金阅读宽度，模仿论文或高质感博客 */
+    margin: 0 auto;            /* 居中显示 */
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;    /* 稍微紧凑的字间距更有现代感 */
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 0.9rem;         /* 故意缩小副标题，增加对比度 */
+    text-transform: uppercase; /* 大写字母，增加专业气质 */
+    color: #5a6b7d;           /* 浅灰色 */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeef2; /* 淡淡的分割线 */
+    padding-bottom: 8px;
+}
+
+/* 链接样式：抛弃蓝色的下划线 */
+a {
+    color: #000;            /* 将文字颜色设为纯黑 */
+    font-weight: bold;      /* 将字体加粗，也可以用 font-weight: 600; */
+    text-decoration: none;  /* 建议：去掉默认下划线，让页面看起来更干净 */
+    transition: color 0.2s ease;
+}
+
+/* 建议：增加悬停效果，提升交互感 */
+a:hover {
+    color: #0047AB; 
+    text-decoration: none;
+}
+
+section {
+    margin-bottom: 48px; /* 让每个板块之间有明显的界限，但不杂乱 */
+}
+
+.social-links a {
+    margin-right: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 容器：使用 Flex 布局 */
+.card-grid {
+    display: flex;
+    flex-direction: column; /* 垂直排列卡片 */
+    gap: 20px;              /* 卡片之间的间距 */
+}
+
+article {
+    padding: 20px;
+    background-color: #ffffff; /* 纯白卡片放在 #f9f9f9 背景上 */
+    border: 1px solid rgba(0,0,0,0.03); /* 极淡的边框 */
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* 平时的投影几乎看不见 */
+}
+
+article:hover {
+    transform: translateY(-3px);
+    /* 悬停时投影稍微扩散，模拟物理抬升 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
+    border-color: rgba(0,0,0,0.1);
+}
+
+/* 卡片内的标题 */
+article h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #000; /* 使用你刚才喜欢的黑色 */
+}
+
+/* 卡片内的简述 */
+article p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.dp-outer-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.dp-container {
+    margin-top: 10px;
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    border: 3px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -1.5px;
+}
+
+.image {
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    border-radius: 100%;
+    z-index: 10;
+}
+
+.dp-circle {
+    position: absolute;
+    inset: -3px; /* 稍微扩大一点，形成一圈精致的外环 */
+    z-index: 1;
+    border-radius: 100%;
+    /* 增加一个非常细的深色轮廓，防止照片边缘融化在背景里 */
+    border: 1px solid rgba(0, 0, 0, 0.05); 
+    background: #ffffff; /* 确保圆圈本身是白的 */
+    box-shadow: 
+        0 1px 1px rgba(0,0,0,0.05), /* 底部微阴影 */
+        0 4px 10px rgba(0,0,0,0.03), /* 软散光 */
+        inset 0 1px 2px rgba(255,255,255,1); /* 顶部高光 */
+}
+
+.btn {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    max-height: 28px;
+    min-height: 28px;
+    min-width: 28px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    border-radius: 8px;
+    background-color: #fff;
+    background-image: radial-gradient(circle closest-corner at 50% 66%, rgba(26, 26, 26, .08), hsla(0, 0%, 100%, .01));
+    box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, .4), 0 0 0 1px rgba(26, 26, 26, .04), 0 1px 2px 1px hsla(0, 0%, 94%, .2), 0 2px 4px 0 hsla(0, 0%, 81%, .2), 0 2px 1px 0 rgba(26, 26, 26, .06), 0 2px 4px -2px rgba(26, 26, 26, .2);
+    transform: translate(0);
+    transition: background-position .4s ease, color .4s ease, transform .12s ease-out, box-shadow .12s ease-in-out;
+    color: #444;
+    font-family: SF Pro Text, system-ui;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.social {
+    display: block;
+    padding-top: 10px;
+}
+
+.social a {
+    display: block;
+    display: inline-block;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 当屏幕宽度小于 600px 时（移动设备） */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 15px; /* 缩小外边距，给内容更多空间 */
+    }
+
+    h1 {
+        font-size: 1.75rem; /* 稍微调小标题，防止折行太难看 */
+    }
+
+    /* 如果你以后想把卡片改成并排，这里可以写并排的逻辑，
+       但目前我们建议保持垂直堆叠，这对手机阅读最友好。 */
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    display: block;
+    margin-bottom: 4px;
+}
+
+ul {
+    list-style-position: inside; /* 让圆点进入内容区 */
+    padding-left: 0;            /* 清除默认缩进 */
+}
+
+/* 针对 Hobby 部分的特别排版 */
+.hobby-card {
+    padding: 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.hobby-card:hover {
+    background-color: #fafafa;
+    border-color: #000; /* 悬停时边框变黑，增加果断感 */
+    transform: translateY(-2px);
+}
+
+.hobby-content {
+    display: flex;
+    align-items: flex-start; /* 图标对齐到顶部，防止文字多时居中显得奇怪 */
+    gap: 16px;
+}
+
+.hobby-content .fa {
+    font-size: 1.2rem;
+    color: #444;
+    min-width: 24px;
+    margin-top: 3px; /* 稍微下移，与标题对齐 */
+    text-align: center;
+}
+
+.hobby-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+.hobby-card p {
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 确保网格在电脑端是两列，手机端是一列 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
